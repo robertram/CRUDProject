@@ -23,6 +23,9 @@
               "src/assets"
             ],
             "styles": [
+              {
+                "input": "node_modules/ngx-toastr/toastr.css"
+              }, 
               "src/styles.css"
             ],
             "scripts": []

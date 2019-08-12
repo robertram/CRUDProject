@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CrudProject';
+
+  author='Robert Ramirez';
+
+
 }

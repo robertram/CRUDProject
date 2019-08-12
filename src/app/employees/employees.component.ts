@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { NgForm } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'acme-employees',
@@ -11,7 +12,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class EmployeesComponent implements OnInit {
 
 
-  constructor(private service: EmployeeService, private firestore: AngularFirestore) {
+  constructor(private service: EmployeeService, 
+    private firestore: AngularFirestore, 
+    private toastr: ToastrService) {
 
   }
   ngOnInit() {
@@ -38,6 +41,8 @@ export class EmployeesComponent implements OnInit {
     else
       this.firestore.doc('employees/' + form.value.id).update(data);
     this.resetForm(form);
+    this.firestore.doc('employees/'+form.value.id).delete();
+    this.toastr.warning('Borrado Exitoso' , 'Registro Emp. ');
   }
 
 
